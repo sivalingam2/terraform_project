@@ -1,3 +1,3 @@
     bucket = "sivalingamdevops"
-    key    = "state/sivalinga"
+    key    = "prod/sivalinga"
     region = "us-east-1"
