@@ -1,6 +1,6 @@
 module "vpc" {
 
-  source                 = "git::https://github.com/sivalingam2/tf-vpc-module"
+  source                 = "git::https://github.com/sivalingam2/tf-vpc-module.git"
   for_each = var.vpc
 
  cidr                      = each.value["cidr"]
@@ -8,6 +8,8 @@ module "vpc" {
   default_vpc_id           = var.default_vpc_id
   default_vpc_cidr         = var.default_vpc_cidr
   default_vpc_route_table_id = var.default_vpc_route_table_id
+  tags                       = var.tags
+  env                        = var.env
 
 }
 output "vpc" {
