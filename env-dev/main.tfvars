@@ -30,4 +30,19 @@ tags = {
   project_name = "roboshop"
 }
 env = "dev"
+alb = {
+  public = {
+    lb_type = "application"
+    internal = false
+    sg_port =80
+    sg_ingress_cidr = [ "0.0.0.0/0"]
+  }
+  private = {
+    lb_type = "application"
+    internal = true
+    sg_port =80
+    sg_ingress_cidr = [ "172.31.0.0/16", "10.0.0.0/16"]
+  }
+}
+
 
