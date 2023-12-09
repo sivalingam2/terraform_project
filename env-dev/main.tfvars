@@ -30,6 +30,7 @@ tags = {
   project_name = "roboshop"
 }
 env = "dev"
+
 alb = {
   public = {
     lb_type = "application"
