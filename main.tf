@@ -31,6 +31,7 @@ module "document_db" {
   for_each = var.document_db
   tags                       = var.tags
   env                        = var.env
+  subnet_ids                 = local.db_subnets
 
 }
 
