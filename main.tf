@@ -13,7 +13,6 @@ module "vpc" {
 
 }
 module "alb" {
-
   source                 = "git::https://github.com/sivalingam2/alb_module.git"
   for_each = var.alb
   internal = each.value["internal"]
@@ -24,6 +23,14 @@ module "alb" {
   tags                       = var.tags
   env                        = var.env
   sg_port = each.value["sg_port"]
+
+}
+module "document_db" {
+
+  source                 = "git::https://github.com/sivalingam2/module_documentdb.git"
+  for_each = var.document_db
+  tags                       = var.tags
+  env                        = var.env
 
 }
 

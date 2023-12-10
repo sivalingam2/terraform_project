@@ -45,5 +45,8 @@ alb = {
     sg_ingress_cidr = [ "172.31.0.0/16", "10.0.0.0/16"]
   }
 }
+document_db = {
+
+}
 
 
