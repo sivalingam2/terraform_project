@@ -60,5 +60,21 @@ module "rds" {
   db_port              = each.value["db_port"]
   rds_type             = each.value["rds_type"]
 }
+module "elastic_cache" {
+  source                 = "git::https://github.com/sivalingam2/module_elastic_cahe.git"
+  for_each = var.elastic-cache
+  tags                       = var.tags
+  env                        = var.env
+  subnet_ids                 = local.db_subnets
+  vpc_id               = local.vpc_id
+  sg_ingress_cidr      = local.app_subnets_cidr
+  family               = each.value["family"]
+  rds_type             = each.value["rds_type"]
+  engine               = each.value["engine"]
+  node_type            = each.value["node_type"]
+  num_cache_nodes      = each.value["num_cache_nodes "]
+  engine_version       = each.value["engine_version"]
+  port                 = each.value["port"]
+}
 
 

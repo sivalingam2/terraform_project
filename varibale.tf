@@ -7,3 +7,4 @@ variable "env" {}
 variable "alb" {}
 variable "document_db" {}
 variable "rds" {}
+variable "elastic-cache" {}
