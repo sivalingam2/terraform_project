@@ -69,7 +69,6 @@ rds = {
     instance_class          = "db.t3.small"
     db_port                = 3306
     rds_type                = "mysql"
-    skip_final_snapshot     = true
 
   }
 
