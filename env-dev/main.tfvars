@@ -74,7 +74,7 @@ rds = {
 
 }
 
-elastic-cache = {
+elastic_cache = {
   main = {
     elasticcache_type                = "redis"
     engine               = "redis"
