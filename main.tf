@@ -88,7 +88,7 @@ module "rabbitmq" {
   ssh_ingress_cidr     = each.value["ssh_ingress_cidr"]
   ami                  = each.value["ami"]
   instance_type        = each.value["instance_type"]
-  zone_id              = each.value['zone_id']
+  zone_id              = each.value["zone_id"]
 
 
 }
