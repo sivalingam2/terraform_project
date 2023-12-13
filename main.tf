@@ -77,4 +77,23 @@ module "elastic_cache" {
   port                 = each.value["port"]
 }
 
+module "rabbitmq" {
+  source                 = "git::https://github.com/sivalingam2/tf_module_rabbitmq.git"
+  for_each = var.rabbitmq
+  tags                       = var.tags
+  env                        = var.env
+  subnet_ids                 = local.db_subnets
+  vpc_id               = local.vpc_id
+  sg_ingress_cidr      = local.app_subnets_cidr
+  ssh_ingress_cidr     = each.value["ssh_ingress_cidr"]
+  ami                  = each.value["ami"]
+  instance_type        = each.value["instance_type"]
+  zone_id              = each.value['zone_id']
+
+
+}
+
+
+
+
 

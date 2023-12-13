@@ -85,6 +85,14 @@ elastic_cache = {
     port                 = 6379
 
   }
+}
+rabbitmq = {
+  main = {
+    ami                   = "ami-03265a0778a880afb"
+    instance_type         = "t3.micro"
+    ssh_ingress_cidr      = ["172.31.41.146/32"]
+    zone_id =     "Z02456543UCI8DLI5F070"
+  }
 
 }
 

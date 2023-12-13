@@ -8,3 +8,4 @@ variable "alb" {}
 variable "document_db" {}
 variable "rds" {}
 variable "elastic_cache" {}
+variable "rabbitmq" {}
