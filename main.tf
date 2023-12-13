@@ -68,8 +68,8 @@ module "elastic_cache" {
   subnet_ids                 = local.db_subnets
   vpc_id               = local.vpc_id
   sg_ingress_cidr      = local.app_subnets_cidr
-  family               = each.value["family"]
-  rds_type             = each.value["rds_type"]
+  engine_family               = each.value["engine_family"]
+  elasticcache_type             = each.value["elasticcache_type"]
   engine               = each.value["engine"]
   node_type            = each.value["node_type"]
   num_cache_nodes      = each.value["num_cache_nodes "]
