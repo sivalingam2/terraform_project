@@ -62,7 +62,7 @@ module "rds" {
 }
 module "elastic_cache" {
   source                 = "git::https://github.com/sivalingam2/module_elastic_cahe.git"
-  for_each = var.elastic-cache
+  for_each = var.elastic_cache
   tags                       = var.tags
   env                        = var.env
   subnet_ids                 = local.db_subnets
