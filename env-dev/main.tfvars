@@ -76,9 +76,9 @@ rds = {
 
 elastic_cache = {
   main = {
-    elasticcache_type                = "redis"
+    elasticcache_type    = "redis"
     engine               = "redis"
-    engine_family           = "redis6.x"
+    engine_family        = "redis6.x"
     node_type            = "cache.t3.micro"
     num_cache_nodes      = 1
     engine_version       = "6.2"
