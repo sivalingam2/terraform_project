@@ -72,7 +72,7 @@ module "elastic_cache" {
   elasticcache_type             = each.value["elasticcache_type"]
   engine               = each.value["engine"]
   node_type            = each.value["node_type"]
-  num_cache_nodes      = each.value["num_cache_nodes "]
+  num_cache_nodes      = each.value["num_cache_nodes"]
   engine_version       = each.value["engine_version"]
   port                 = each.value["port"]
 }
