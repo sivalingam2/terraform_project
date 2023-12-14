@@ -94,7 +94,7 @@ module "alb" {
 #}
 module "app" {
   source                 = "git::https://github.com/sivalingam2/tf_module_app.git"
-  for_each = var.rabbitmq
+
   tags                       = var.tags
   env                        = var.env
   subnet_ids                 = local.app_subnets
@@ -102,8 +102,11 @@ module "app" {
   sg_ingress_cidr      = local.app_subnets_cidr
   ssh_ingress_cidr     = var.ssh_ingress_cidr
   ami                  = var.ami
-  instance_type        = each.value["instance_type"]
   zone_id              = var.zone_id
+
+  for_each = var.app
+
+  instance_type        = each.value["instance_type"]
   component            = each.key
   port                 = each.value["port"]
 
