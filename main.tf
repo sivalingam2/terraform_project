@@ -97,18 +97,19 @@ module "app" {
 
   tags                       = var.tags
   env                        = var.env
-  subnet_ids                 = local.app_subnets
-  vpc_id               = local.vpc_id
-  sg_ingress_cidr      = local.app_subnets_cidr
   ssh_ingress_cidr     = var.ssh_ingress_cidr
   ami                  = var.ami
   zone_id              = var.zone_id
 
   for_each = var.app
-
   instance_type        = each.value["instance_type"]
   component            = each.key
-  port                 = each.value["port"]
+  port                  = each.value["port"]
+
+  vpc_id               = local.vpc_id
+  sg_ingress_cidr      = local.app_subnets_cidr
+
+
 
 }
 
