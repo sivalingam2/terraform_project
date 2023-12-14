@@ -1,3 +1,12 @@
+default_vpc_id = "vpc-0f12910c6a4b76385"
+default_vpc_cidr = "172.31.0.0/16"
+default_vpc_route_table_id = "rtb-075dd482abc6dea71"
+env = "dev"
+ssh_ingress_cidr      = ["172.31.41.146/32"]
+zone_id =     "Z02456543UCI8DLI5F070"
+ami                   = "ami-03265a0778a880afb"
+
+
 vpc = {
   main = {
     cidr = "10.0.0.0/16"
@@ -18,10 +27,6 @@ vpc = {
   }
   }
 }
-default_vpc_id = "vpc-0f12910c6a4b76385"
-default_vpc_cidr = "172.31.0.0/16"
-default_vpc_route_table_id = "rtb-075dd482abc6dea71"
-
 tags = {
   company_name = "ABC Company"
   business_unit = "learning"
@@ -29,7 +34,7 @@ tags = {
   created_by = "siva"
   project_name = "roboshop"
 }
-env = "dev"
+
 
 alb = {
   public = {
@@ -71,7 +76,6 @@ rds = {
     rds_type                = "mysql"
 
   }
-
 }
 
 elastic_cache = {
@@ -88,10 +92,14 @@ elastic_cache = {
 }
 rabbitmq = {
   main = {
-    ami                   = "ami-03265a0778a880afb"
     instance_type         = "t3.micro"
-    ssh_ingress_cidr      = ["172.31.41.146/32"]
-    zone_id =     "Z02456543UCI8DLI5F070"
+  }
+}
+app = {
+  frontend = {
+    instance_type         = "t3.micro"
+    port   = 80
+
   }
 
 }

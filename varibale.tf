@@ -9,3 +9,6 @@ variable "document_db" {}
 variable "rds" {}
 variable "elastic_cache" {}
 variable "rabbitmq" {}
+variable "ami" {}
+variable "ssh_ingress_cidr" {}
+variable "zone_id" {}

@@ -24,72 +24,88 @@ module "alb" {
   sg_port = each.value["sg_port"]
 
 }
-module "document_db" {
-  source                 = "git::https://github.com/sivalingam2/module_documentdb.git"
-  for_each = var.document_db
-  tags                       = var.tags
-  env                        = var.env
-  subnet_ids                 = local.db_subnets
-  backup_retention_period = each.value["backup_retention_period"]
-  preferred_backup_window = each.value["preferred_backup_window"]
-  skip_final_snapshot     = each.value["skip_final_snapshot"]
-  vpc_id               = local.vpc_id
-  sg_ingress_cidr      = local.app_subnets_cidr
-  engine_version       = each.value["engine_version"]
-  engine_family        = each.value["engine_family"]
-  engine               = each.value["engine"]
-  instance_count       = each.value["instance_count"]
-  instance_class       = each.value["instance_class"]
-}
-module "rds" {
-  source                 = "git::https://github.com/sivalingam2/module_rds.git"
-  for_each = var.rds
-  tags                       = var.tags
-  env                        = var.env
-  subnet_ids                 = local.db_subnets
-  backup_retention_period = each.value["backup_retention_period"]
-  preferred_backup_window = each.value["preferred_backup_window"]
-  skip_final_snapshot     = each.value["skip_final_snapshot"]
-  vpc_id               = local.vpc_id
-  sg_ingress_cidr      = local.app_subnets_cidr
-  engine_version       = each.value["engine_version"]
-  engine_family        = each.value["engine_family"]
-  engine               = each.value["engine"]
-  instance_count       = each.value["instance_count"]
-  instance_class       = each.value["instance_class"]
-  db_port              = each.value["db_port"]
-  rds_type             = each.value["rds_type"]
-}
-module "elastic_cache" {
-  source                 = "git::https://github.com/sivalingam2/module_elastic_cahe.git"
-  for_each = var.elastic_cache
-  tags                       = var.tags
-  env                        = var.env
-  subnet_ids                 = local.db_subnets
-  vpc_id               = local.vpc_id
-  sg_ingress_cidr      = local.app_subnets_cidr
-  engine_family               = each.value["engine_family"]
-  elasticcache_type             = each.value["elasticcache_type"]
-  engine               = each.value["engine"]
-  node_type            = each.value["node_type"]
-  num_cache_nodes      = each.value["num_cache_nodes"]
-  engine_version       = each.value["engine_version"]
-  port                 = each.value["port"]
-}
+#module "document_db" {
+#  source                 = "git::https://github.com/sivalingam2/module_documentdb.git"
+#  for_each = var.document_db
+#  tags                       = var.tags
+#  env                        = var.env
+#  subnet_ids                 = local.db_subnets
+#  backup_retention_period = each.value["backup_retention_period"]
+#  preferred_backup_window = each.value["preferred_backup_window"]
+#  skip_final_snapshot     = each.value["skip_final_snapshot"]
+#  vpc_id               = local.vpc_id
+#  sg_ingress_cidr      = local.app_subnets_cidr
+#  engine_version       = each.value["engine_version"]
+#  engine_family        = each.value["engine_family"]
+#  engine               = each.value["engine"]
+#  instance_count       = each.value["instance_count"]
+#  instance_class       = each.value["instance_class"]
+#}
+#module "rds" {
+#  source                 = "git::https://github.com/sivalingam2/module_rds.git"
+#  for_each = var.rds
+#  tags                       = var.tags
+#  env                        = var.env
+#  subnet_ids                 = local.db_subnets
+#  backup_retention_period = each.value["backup_retention_period"]
+#  preferred_backup_window = each.value["preferred_backup_window"]
+#  skip_final_snapshot     = each.value["skip_final_snapshot"]
+#  vpc_id               = local.vpc_id
+#  sg_ingress_cidr      = local.app_subnets_cidr
+#  engine_version       = each.value["engine_version"]
+#  engine_family        = each.value["engine_family"]
+#  engine               = each.value["engine"]
+#  instance_count       = each.value["instance_count"]
+#  instance_class       = each.value["instance_class"]
+#  db_port              = each.value["db_port"]
+#  rds_type             = each.value["rds_type"]
+#}
+#module "elastic_cache" {
+#  source                 = "git::https://github.com/sivalingam2/module_elastic_cahe.git"
+#  for_each = var.elastic_cache
+#  tags                       = var.tags
+#  env                        = var.env
+#  subnet_ids                 = local.db_subnets
+#  vpc_id               = local.vpc_id
+#  sg_ingress_cidr      = local.app_subnets_cidr
+#  engine_family               = each.value["engine_family"]
+#  elasticcache_type             = each.value["elasticcache_type"]
+#  engine               = each.value["engine"]
+#  node_type            = each.value["node_type"]
+#  num_cache_nodes      = each.value["num_cache_nodes"]
+#  engine_version       = each.value["engine_version"]
+#  port                 = each.value["port"]
+#}
 
-module "rabbitmq" {
-  source                 = "git::https://github.com/sivalingam2/tf_module_rabbitmq.git"
+#module "rabbitmq" {
+#  source                 = "git::https://github.com/sivalingam2/tf_module_rabbitmq.git"
+#  for_each = var.rabbitmq
+#  tags                       = var.tags
+#  env                        = var.env
+#  subnet_ids                 = local.db_subnets
+#  vpc_id               = local.vpc_id
+#  sg_ingress_cidr      = local.app_subnets_cidr
+#  ssh_ingress_cidr     = var.ssh_ingress_cidr
+#  ami                  = var.ami
+#  instance_type        = each.value["instance_type"]
+#  zone_id              = var.zone_id
+#
+#
+#}
+module "app" {
+  source                 = "git::https://github.com/sivalingam2/tf_module_app.git"
   for_each = var.rabbitmq
   tags                       = var.tags
   env                        = var.env
-  subnet_ids                 = local.db_subnets
+  subnet_ids                 = local.app_subnets
   vpc_id               = local.vpc_id
   sg_ingress_cidr      = local.app_subnets_cidr
-  ssh_ingress_cidr     = each.value["ssh_ingress_cidr"]
-  ami                  = each.value["ami"]
+  ssh_ingress_cidr     = var.ssh_ingress_cidr
+  ami                  = var.ami
   instance_type        = each.value["instance_type"]
-  zone_id              = each.value["zone_id"]
-
+  zone_id              = var.zone_id
+  component            = each.key
+  port                 = each.value["port"]
 
 }
 
