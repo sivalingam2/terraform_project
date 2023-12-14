@@ -108,8 +108,10 @@ module "app" {
 
   vpc_id               = local.vpc_id
   sg_ingress_cidr      = local.app_subnets_cidr
-  subnet_ids                 = local.app_subnets
-
+  subnet_ids            = local.app_subnets
+  desired_capacity      = each.value["desired_capacity"]
+  max_size             = each.value["max_size"]
+  min_size             = each.value["min_size"]
 
 
 }
