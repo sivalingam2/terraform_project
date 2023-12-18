@@ -100,6 +100,7 @@ module "app" {
   ssh_ingress_cidr     = var.ssh_ingress_cidr
   ami                  = var.ami
   zone_id              = var.zone_id
+  default_vpc_id           = var.default_vpc_id
 
   for_each = var.app
   instance_type        = each.value["instance_type"]
