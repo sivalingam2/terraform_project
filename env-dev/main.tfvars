@@ -152,7 +152,6 @@ app = {
     min_size             = 1
     priority             = 7
   }
-
 }
 
 
